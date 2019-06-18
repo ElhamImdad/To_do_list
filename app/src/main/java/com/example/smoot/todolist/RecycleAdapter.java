@@ -12,11 +12,9 @@ import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
-
 public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHolder>{
 
     ArrayList<TrelloCard> arrayList = new ArrayList<>();
-    TextView text2 ;
 
     public RecycleAdapter(ArrayList<TrelloCard> arrayList) {
         this.arrayList = arrayList;
@@ -32,7 +30,9 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.textView.setText(arrayList.get(i).getId());
+        myViewHolder.textView1.setText(arrayList.get(i).getFullName()+"\n"+arrayList.get(i).gettitle());
+
+
     }
 
     @Override
@@ -41,11 +41,11 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
     }
 
     public  class MyViewHolder extends RecyclerView.ViewHolder  {
-        TextView textView;
+        TextView textView1;
 
         public MyViewHolder( View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.toDoText);
+            textView1 = itemView.findViewById(R.id.toDoText);
 
         }
 

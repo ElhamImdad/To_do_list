@@ -37,28 +37,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        textCardView = (TextView) findViewById(R.id.toDoText);
+        textCardView = findViewById(R.id.toDoText);
         mQueue = Volley.newRequestQueue(this);
          // call json method
         jsonParse();
 
         adapter = new RecycleAdapter(trelloListCard);
         recyclerView.setAdapter(adapter);
-/*
-        Button button_addCard = (Button)findViewById(R.id.addCards);
-        button_addCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText title = (EditText) findViewById(R.id.simpleEditText);
-                String editTextValue = title.getText().toString();
-            }
-        });
-        */
+
     }
 
     private void jsonParse(){
@@ -68,22 +59,27 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray jsonArray = response.getJSONArray(url);
-                        //    JSONObject id = response.getJSONObject("id");
-                        //    JSONObject name = response.getJSONObject("name");
-
+                            JSONArray jsonArray = response.getJSONArray("array");
 
                             for (int i = 0; i < jsonArray.length(); i++){
-                                JSONObject results = jsonArray.getJSONObject(i);
+                                JSONObject result1 = jsonArray.getJSONObject(i);
 
-                                String id = results.getString("id");
-                             //   String name = results.getString("name");
+                                String type = result1.getString("id");
+                                String typeName = result1.getString("name");
+                                JSONArray cards = result1.getJSONArray("cards");
+                                String cardId = cards.getString(Integer.parseInt("id"));
+                                String cardName = cards.getString(Integer.parseInt("name"));
+
+
                                 TrelloCard t = new TrelloCard();
-                                t.setId(id);
+                                t.setFullName(typeName);
+                                t.settitle(cardName);
                                 trelloListCard.add(t);
-                                Log.d("Result" , id);
-                                textCardView.append(String.valueOf(id)+ "\n\n ");
-
+                               /*   Log.d("Result" , id);*/
+                               String cardInfo = typeName+" :\n"+cardName;
+                               Log.d("Result",cardInfo);
+                               // textCardView.append(String.valueOf(id)+ "\n\n ");
+                                textCardView.setText(cardInfo);
                                // textCardView.append(String.valueOf(id)+"\n"+  name+ "\n\n ");
                             }
                         } catch (JSONException excep) {

@@ -6,6 +6,9 @@ public class TrelloCard {
     String due;
     String title;
 
+
+
+
     public String getFullName() {
         return fullName;
     }
