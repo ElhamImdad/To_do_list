@@ -1,0 +1,60 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="training.tamayoz.myapplication1.MainActivity">
+    <item
+        android:id="@+id/add_card"
+        android:orderInCategory="100"
+        android:title="@string/add_card"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/copy_list"
+        android:orderInCategory="100"
+        android:title="@string/copy_list"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/move_list"
+        android:orderInCategory="100"
+        android:title="@string/move_list"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/watch"
+        android:orderInCategory="100"
+        android:title="@string/watch"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/sort_by"
+        android:orderInCategory="100"
+        android:title="@string/sort_by"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/move_cards"
+        android:orderInCategory="100"
+        android:title="@string/move_cards"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/archive_cards"
+        android:orderInCategory="100"
+        android:title="@string/archive_cards"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/archive"
+        android:orderInCategory="100"
+        android:title="@string/archive"
+        app:showAsAction="never"
+        />
+
+</menu>

@@ -14,32 +14,13 @@ import static android.content.ContentValues.TAG;
 
 public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHolder>{
 
-    ArrayList<TrelloCard> arrayList = new ArrayList<>();
 
-    public RecycleAdapter(ArrayList<TrelloCard> arrayList) {
-        this.arrayList = arrayList;
+    ArrayList<String> cards;
+
+    public RecycleAdapter(ArrayList<String> cards) {
+
+        this.cards=cards;
     }
-
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.to_do_list, viewGroup, false);
-
-        return new MyViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.textView1.setText(arrayList.get(i).getFullName()+"\n"+arrayList.get(i).gettitle());
-
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return arrayList.size();
-    }
-
     public  class MyViewHolder extends RecyclerView.ViewHolder  {
         TextView textView1;
 
@@ -49,6 +30,33 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.MyViewHo
 
         }
 
+    }
+
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.to_do_list, viewGroup, false);
+
+        return new MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder( MyViewHolder myViewHolder, int i) {
+        //+arrayList.get(i).gettitle()
+       // TrelloCard t = arrayList.get(i);
+       // t.setCardList(cards);
+        //myViewHolder.textView1.setText(cards.get(i));
+        Log.e("inside adapter", cards.get(i));
+        myViewHolder.textView1.setText(cards.get(i));
+       // myViewHolder.textView1.append(t.cardList.get(i));
+
+
+    }
+
+
+
+    @Override
+    public int getItemCount() {
+        return cards.size();
     }
 }
 
